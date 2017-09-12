@@ -1,0 +1,156 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"-->
+      <!--xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">-->
+<!--<head>-->
+
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+    <!--<meta name="description" content="">-->
+    <!--<meta name="author" content="">-->
+
+    <!--&lt;!&ndash; Bootstrap core CSS &ndash;&gt;-->
+    <!--<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <!--&lt;!&ndash; Custom fonts for this template &ndash;&gt;-->
+    <!--<link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>-->
+    <!--<link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>-->
+
+    <!--&lt;!&ndash; Custom styles for this template &ndash;&gt;-->
+    <!--<link href="/css/clean-blog.min.css" rel="stylesheet">-->
+
+
+
+    <!--<title>Job/Employee Finder</title>-->
+
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; Navigation &ndash;&gt;-->
+<!--<nav th:replace="base :: navbar"></nav>-->
+<!--&lt;!&ndash; /.Navigation &ndash;&gt;-->
+
+<!--&lt;!&ndash; Page Header &ndash;&gt;-->
+<!--<header th:replace="base :: header"></header>-->
+<!--&lt;!&ndash; /.Page Header &ndash;&gt;-->
+
+
+
+
+
+
+<!--&lt;!&ndash;<div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">Robo Resume:</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<br><br>&ndash;&gt;-->
+
+<!--<div class="container">-->
+
+    <!--&lt;!&ndash; Personal Info &ndash;&gt;-->
+    <!--<div class="bg-faded p-4 my-4">-->
+        <!--<hr class="divider">-->
+        <!--<h4 class="text-center text-lg text-uppercase my-0"><strong>Personal Information</strong></h4>-->
+        <!--<hr class="divider">-->
+        <!--<div class="form-group">-->
+            <!--&lt;!&ndash;<h5 th:inline="text"><strong>Full Name: </strong>[[${person.firstName}]] [[${person.lastName}]].</h5>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h5 th:inline="text"><strong> Email Address: </strong>[[${person.emailAddress}]].</h5>&ndash;&gt;-->
+            <!--&lt;!&ndash;<h3> Personal Information</h3>&ndash;&gt;-->
+            <!--<h5 style="font-weight: normal" th:text="${person.firstName} + ' ' + ${person.lastName}"></h5>-->
+            <!--<h5 style="font-weight: normal" th:text="${person.emailAddress}"></h5>-->
+            <!--<div>-->
+
+            <!--</div>-->
+            <!--<br>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /Personal Info &ndash;&gt;-->
+
+
+    <!--&lt;!&ndash; Education Info &ndash;&gt;-->
+    <!--<div class="bg-faded p-4 my-4">-->
+        <!--<hr class="divider">-->
+        <!--<h4 class="text-center text-lg text-uppercase my-0"><strong>Educational Achievements</strong></h4>-->
+        <!--<hr class="divider">-->
+
+        <!--<div class="form-group">-->
+            <!--&lt;!&ndash;<h3>Education:</h3>&ndash;&gt;-->
+            <!--<div th:each="e:${person.educationalAchievements}">-->
+                <!--<h5 style="font-weight: normal" th:text="${e.degreeTitle} + ','"></h5>-->
+                <!--<h5 style="font-weight: normal" th:text="${e.educationalInstitution} + ', ' + ${e.graduateDate}"></h5>-->
+                <!--<br>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.Education Info &ndash;&gt;-->
+
+
+    <!--&lt;!&ndash; Employment Info &ndash;&gt;-->
+    <!--<div class="bg-faded p-4 my-4">-->
+        <!--<hr class="divider">-->
+        <!--<h4 class="text-center text-lg text-uppercase my-0"><strong>Work Experience</strong></h4>-->
+        <!--<hr class="divider">-->
+        <!--<div class="form-group">-->
+
+            <!--<div th:each="w:${person.workExperience}">-->
+                <!--<h5 style="font-weight: normal" th:text="${w.positionTitle}"></h5>-->
+                <!--<h5 style="font-weight: normal" th:text="${w.organisation} + ', ' + ${w.startDate} + ' - ' + ${w.endDate}"></h5>-->
+                <!--<h5 style="font-weight: normal" th:text="'Duty: ' + ${w.duty}"></h5>-->
+                <!--<br>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.Employment Info &ndash;&gt;-->
+
+
+
+
+    <!--&lt;!&ndash; Skills Info &ndash;&gt;-->
+    <!--<div class="bg-faded p-4 md-4">-->
+        <!--<hr class="divider">-->
+        <!--<h4 class="text-center text-lg text-uppercase my-0"><strong>Skills with Rating</strong></h4>-->
+        <!--<hr class="divider">-->
+
+
+
+        <!--<div class="form-group">-->
+            <!--<div th:each="s:${person.skillsWithRating}">-->
+                <!--<h5 style="font-weight: normal" th:text="${s.skillTitle} + ', ' + ${s.skillRating}"></h5>-->
+                <!--<br>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /.Skills Info &ndash;&gt;-->
+
+                <!--<div style="padding-top: 10%"> Logged user: <span sec:authentication="name">The user is not logged in yet</span><div>-->
+                    <!--<div><a href="/logout">Logout</a></div>-->
+
+                    <!--<div class="col-sm-4">-->
+                        <!--<a class="btn btn-success" href="/welcome" type = "submit" style="width:300px">Recruiter Home Page</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash; /.Links to other Pages&ndash;&gt;-->
+            <!--</div>-->
+            <!--&lt;!&ndash; /.Enter more Info, Links to other Pages &ndash;&gt;-->
+
+
+        <!--</div>-->
+        <!--&lt;!&ndash; /.container &ndash;&gt;-->
+
+
+
+
+        <!--&lt;!&ndash; Footer &ndash;&gt;-->
+        <!--<div th:replace="base :: footer"></div>-->
+
+        <!--&lt;!&ndash; Bootstrap core JavaScript &ndash;&gt;-->
+        <!--<script src="/vendor/jquery/jquery.min.js"></script>-->
+        <!--<script src="/vendor/popper/popper.min.js"></script>-->
+        <!--<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>-->
+
+        <!--&lt;!&ndash; Custom scripts for this template &ndash;&gt;-->
+        <!--<script src="/js/clean-blog.min.js"></script>-->
+
+
+<!--</body>-->
+
+<!--</html>-->

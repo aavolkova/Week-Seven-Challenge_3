@@ -1,0 +1,38 @@
+body {
+    font-family: "Raleway", sans-serif;
+    background-image: url("/img/pexels-photo-326055.jpg");
+    /*background-color: #cccccc;*/
+
+}
+h1 {
+    font-family: "Raleway", sans-serif;
+}
+
+body, html {
+    height: 100%;
+    font-size: 20px;
+}
+
+
+.bgimg {
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+
+
+.btn btn-info {
+    background-color: #008CBA;
+
+    border-radius: 12px;
+}
+
+
+a{
+    /*background-color: dodgerblue;*/
+    background-color: #1c51ba;
+    border-radius: 12px;
+    padding: 12px 16px;
+}
+
+

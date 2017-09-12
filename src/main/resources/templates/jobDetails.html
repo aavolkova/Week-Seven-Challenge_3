@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+    <title>Recruiter Hunt - Result Job</title>
+
+</head>
+<body>
+<!-- Navigation -->
+<nav th:replace="base :: navbar"></nav>
+<!-- /.Navigation -->
+
+<!-- Page Header -->
+<header th:fragment="header" class="masthead" style="background-image: url('/img/banner-finger-keyboard.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <!--<h1>Robo Resume</h1>-->
+                    <h1>Job / Employee Finder</h1>
+                    <h3>
+                        <span class="subheading" style="font-weight: 600">Find Employees Matching Your Requirements<br>
+                                                             Find a Job that Matches Your Skills</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- /.Page Header -->
+
+
+
+<div class="container">
+<!-- Job Info -->
+<div class="bg-faded p-4 my-4">
+    <hr class="divider">
+    <h2 class="text-center text-lg text-uppercase my-0"><strong>Job Post Details</strong></h2>
+    <hr class="divider">
+    <div class="form-group">
+
+        <!--<h5 style="font-weight: normal" th:inline="text"><strong>Skill Title: </strong>[[${newSkills.skillTitle}]]</h5>-->
+        <!--<h5 style="font-weight: normal" th:inline="text"><strong>Job Id: </strong>[[${job.id}]]</h5>-->
+        <h5 style="font-weight: normal" th:inline="text"><strong>Job Title: </strong>[[${job.title}]]</h5>
+        <h5 style="font-weight: normal" th:inline="text"><strong>Organisation: </strong>[[${job.employer}]]</h5>
+        <h5 style="font-weight: normal" th:inline="text"><strong>Salary range: </strong>[[${job.minSalary}]] - [[${job.maxSalary}]]</h5>
+        <h5 style="font-weight: normal" th:inline="text"><strong>Job Description: </strong>[[${job.description}]]</h5>
+
+        <h5 style="font-weight: normal" th:inline="text"><strong>List of Skill Requirements:</strong></h5>
+        <br>
+        <table class="table table-striped">
+            <tr>
+                <td><b>Skill Title</b></td>
+                <td><b>Skill Rating</b></td>
+                <!--<td><b>Update</b></td>-->
+                <!--<td><b>Delete Skill</p></b></td>-->
+            </tr>
+            <!--iterate through all the recruiter jobs-->
+            <th:block th:each="all:${skillsWithRating}">
+                <tr>
+                    <td><a th:text="${all.skillTitle}"></a></td>
+                    <td><a th:text="${all.skillRating}"></a></td>
+                    <!--<td>-->
+                        <!--<a th:href="@{/jobDetails/{id}(id=${all.id})}">See Job Details</a>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                        <!--<a th:href="@{/deleteJob/{id}(id=${all.id})}">Delete Job</a>-->
+                    <!--</td>-->
+                </tr>
+            </th:block>
+        </table>
+
+        <div>
+            <!--<a th:href="@{/updateJob/{id}(id=${w.id})}">Update Job</a>-->
+            <!--<a th:href="@{/deleteJob/{id}(id=${w.id})}">Delete Job</a>-->
+        </div>
+        <br>
+
+    </div>
+</div>
+<!-- /.Job Info -->
+
+
+    <!--================ Recruiter Content ONLY===============-->
+    <div sec:authorize="hasAuthority('RECRUITER')">
+        <div class="col-sm-4">
+            <a class="btn btn-secondary" th:href="@{/addskilltojob/{id}(id=${job.id})}">Add Skill from the List to This Job</a><br><br>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn btn-secondary" th:href="@{/addskill}" type="submit">Create a New Skill</a><br><br>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn btn-success" href="/displayRecruiterAllJobPosts" type="submit">Go to the list of all job that you posted</a><br><br>
+        </div>
+        <div class="col-sm-4">
+            <a class="btn btn-success" href="/welcome" type = "submit" style="width:300px">Recruiter Home Page</a><br><br>
+        </div>
+    </div>
+    <!--================/.Recruiter ===============-->
+
+
+    <!--================ Seeker Content ONLY===============-->
+    <!-- Links to other Pages-->
+    <div sec:authorize="hasAuthority('SEEKER')">
+        <div class="col-sm-4">
+            <a class="btn btn-success" href="/welcome" type = "submit" style="width:300px">Job Seeker Home Page</a><br><br>
+        </div>
+    </div>
+    <!--================/.Seeker ===============-->
+
+<div class="container1">
+    <div style="padding-top: 10%"> Logged user: <span sec:authentication="name">The user is not logged in yet</span></div>
+    <div><a href="/logout">Logout</a></div>
+</div>
+<!-- /.Links to other Pages-->
+
+
+</div>
+<!-- /.container -->
+
+
+
+
+
+<!-- Footer -->
+<div th:replace="base :: footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/popper/popper.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/clean-blog.min.js"></script>
+
+
+</body>
+</html>

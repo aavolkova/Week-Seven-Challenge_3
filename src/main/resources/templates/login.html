@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+    <!-- My styles for this template -->
+    <!--<link href="/css/additionals.css" rel="stylesheet">-->
+
+
+
+    <title>Robo Resume Security Page</title>
+
+</head>
+<!--<body style="background-image: url('img/giantfullscreen.jpg')">-->
+<body>
+
+    <!-- Navigation -->
+    <!--<nav th:replace="base :: navbar"></nav>-->
+    <!-- /.Navigation -->
+
+
+
+    <!-- Page Header -->
+    <header th:fragment="header" class="masthead" style="background-image: url('/img/keyboard-narrow.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 mx-auto">
+                    <div class="site-heading">
+
+
+
+
+                        <h1>Job / Employee Finder</h1>
+                        <div class="col-lg-8 col-md-10 mx-auto">
+                        <span class="subheading" style="font-weight: 600">
+                                <!--Post Your Jobs<br>-->
+                            Find Employees Matching Your Requirements<br>
+                                <!--Create Your Professional Resume<br>-->
+                            Find a Job that Matches Your Skills<br>
+                                Log In Page
+                            </span>
+
+                        <!--<div sec:authorize="hasAuthority('RECRUITER')">-->
+                            <!--&lt;!&ndash;This content is only shown to recruiters.&ndash;&gt;-->
+                            <!--<h1>Employee Hunter</h1>-->
+                            <!--<span class="subheading" style="font-weight: 600">-->
+                                <!--Quickly Post Your Jobs<br>-->
+                                <!--Find Employees that Match Your Job Skill Requirements<br>-->
+                                <!--Log In Page-->
+                            <!--</span>-->
+                        <!--</div>-->
+                        <!--<div sec:authorize="hasAuthority('SEEKER')">-->
+                            <!--&lt;!&ndash;This content is only shown to job seekers.&ndash;&gt;-->
+                            <!--<h1>Robo Resume</h1>-->
+                            <!--<span class="subheading" style="font-weight: 600">-->
+                                <!--Robo Resume Application: Create your professional resume in 15 minutes!<br>-->
+                                <!--Find a Job that Matches Your Skills<br>-->
+                                <!--Log In Page-->
+                            <!--</span>-->
+                        <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /.Page Header -->
+
+
+
+    <!--Old:-->
+    <!--<div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block"><br><br><br>Robo Resume Application Secure Page</div>-->
+    <!---->
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-4 mx-auto">
+
+                <div th:if="${param.error}">
+                    Invalid username and password.
+                </div>
+                <div th:if="${param.logout}">
+                    You have been logged out.
+                </div>
+
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label">Username:</label>
+                        <input type="text" class="form-control" placeholder="Enter user name" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-5 control-label">Password:</label>
+                        <input type="password" class="form-control" placeholder="Enter password" name="password" required>
+                    </div>
+                    <p class="alert alert-danger" th:if="${param.error}">Invalid username or password</p>
+                    <div style="align-content: center; padding-left: 40%">
+                        <input class="btn btn-secondary" type = "submit" value="Log In" style="text-align: center"/></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.Main Content -->
+
+
+
+    <!-- Footer -->
+    <div th:replace="base :: footer"></div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/popper/popper.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/clean-blog.min.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+
+
+    <title>Display All Job posts</title>
+
+</head>
+
+<body>
+<!-- Navigation -->
+<nav th:replace="base :: navbar"></nav>
+<!-- /.Navigation -->
+
+<!-- Page Header -->
+<header th:replace="base :: header"></header>
+<!-- /.Page Header -->
+
+
+
+
+
+
+<!--<div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">Robo Resume:</div>-->
+
+<!--<br><br>-->
+
+<div class="container">
+
+    <!-- Personal Info -->
+    <div class="bg-faded p-4 my-4">
+        <hr class="divider">
+        <h2 class="text-center text-lg text-uppercase my-0"><strong>Recruiter Information:</strong></h2>
+        <hr class="divider">
+        <div class="form-group">
+
+            <h5 style="font-weight: normal" th:text="${person.firstName} + ' ' + ${person.lastName}"></h5>
+            <h5 style="font-weight: normal" th:text="${person.emailAddress}"></h5>
+            <div>
+                <!--<a th:href="@{/updatePerson/{id}(id=${person.id})}">Update</a>-->
+            </div>
+            <br>
+        </div>
+    </div>
+    <!-- /Personal Info -->
+
+
+
+
+    <h2 class="text-center text-lg text-uppercase my-0"><strong>Here is the List of All Your Job Posts</strong></h2>
+    <hr class="divider">
+
+    <div class="container" style="text-align: center">
+
+        <table class="table table-striped">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Job Title</b></td>
+                <td><b>Company</b></td>
+                <td><b>Details / Update</b></td>
+                <td><b>Delete Job</p></b></td>
+            </tr>
+
+            <!--iterate through all the recruiter jobs-->
+            <th:block th:each="all:${alljobs}">
+                <tr>
+                    <td><a th:text="${all.id}"></a></td>
+                    <td><a th:text="${all.title}"></a></td>
+                    <td><a th:text="${all.employer}"></a></td>
+                    <td>
+                        <a th:href="@{/jobDetails/{id}(id=${all.id})}">See Job Details</a>
+                    </td>
+                    <td>
+                        <!--<a th:href="@{/deleteJob/{id}(id=${all.id})}">Delete Job</a>-->
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+
+
+        <br><br>
+        <hr class="divider">
+        <br><br>
+    </div>
+
+
+
+    <!-- Enter more Info, Links to other Pages -->
+    <div class="bg-faded p-4 my-4" style="text-align: center">
+        <!-- Enter more Info -->
+        <div class="container1">
+            <div class=row>
+                <div class="col-sm-4">
+                    <a class="btn btn-primary" th:href="@{/addjob}" type="submit" type = "submit" style="width:300px">Create a New Job</a><br>
+                </div>
+                <div class="col-sm-4">
+                    <a class="btn btn-info" th:href="@{/addskill}" type="submit" type = "submit" style="width:300px">Create a New Skill</a><br>
+                </div>
+                <div class="col-sm-4">
+                    <a class="btn btn-success" href="/welcome" type = "submit" style="width:300px">Recruiter Home Page</a>
+                </div>
+            </div>
+        </div>
+        <!-- /.Enter more Info -->
+        <br>
+        <!-- Links to other Pages-->
+        <div class="container1">
+                <div style="padding-top: 10%"> Logged user: <span sec:authentication="name">The user is not logged in yet</span></div>
+                <div><a href="/logout">Logout</a></div>
+        </div>
+        <!-- /.Links to other Pages-->
+    </div>
+    <!-- /.Enter more Info, Links to other Pages -->
+
+
+</div>
+<!-- /.container -->
+
+
+
+
+<!-- Footer -->
+<div th:replace="base :: footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/popper/popper.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/clean-blog.min.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+
+    <title>Robo Resume - Result Skills</title>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav th:replace="base :: navbar"></nav>
+    <!-- /.Navigation -->
+
+    <!-- Page Header -->
+    <header th:fragment="header" class="masthead" style="background-image: url('/img/banner-finger-keyboard.jpg')">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>Robo Resume</h1>
+                        <span class="subheading">Welcome to My Robo Resume Application<br>Create your professional resume in 15 minutes!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /.Page Header -->
+
+
+
+
+
+
+
+
+    <!--<div>Skills with Rating</div>-->
+
+    <!--<br><br>-->
+
+    <div class="container">
+
+        <div>
+
+            <h2><strong>Here is the information you just entered</strong></h2>
+
+
+            <div>
+                <h5 th:text="'Skill for ' + ${personObject.firstName}+ ' ' + ${personObject.lastName} + ':'" style="font-weight: bold; color:steelblue"></h5>
+
+                <!--<h5 th:inline="text" style="text-indent: 10px;"><strong>  Skill Title:  </strong>[[${newSkills.skillTitle}]].</h5>-->
+                <h5 style="font-weight: normal" th:inline="text"><strong>Skill Title: </strong>[[${newSkills.skillTitle}]]</h5>
+                <h5 style="font-weight: normal" th:inline="text"><strong>Skill Rating: </strong>[[${newSkills.skillRating}]]</h5>
+
+                <!--<h5 th:text="' Skill Title: ' + ${newSkills.skillTitle}"></h5>-->
+                <!--<h5 th:text="'Skill Rating: ' + ${newSkills.skillRating}"></h5>-->
+                <!--<a th:href="@{/updateSkills/{id}(id=${newSkills.id})}">Update</a>-->
+            </div>
+
+            <br>
+
+            <!-- Enter more Info -->
+            <div class="form-group">
+                <a class="btn btn-secondary" th:href="@{/enterSkills/{id}(id=${personObject.id})}" type = "submit">Add Another Skill for this Person</a><br><br>
+                <a class="btn btn-secondary" th:href="@{/enterEducation/{id}(id=${personObject.id})}" type = "submit">Add Education</a><br><br>
+                <a class="btn btn-secondary" th:href="@{/enterEmployment/{id}(id=${personObject.id})}" type = "submit">Add Employment</a>
+
+                <!--Also works!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!:-->
+                <!--<a class="btn btn-secondary" th:href="@{/enterSkills/{id}(id=${newSkills.person.id})}" type = "submit">Try to Add Another Skill for this Person</a><br><br>-->
+            </div>
+            <!-- /.Enter more Info -->
+        </div>
+
+        <!-- Links to other Pages -->
+                <div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a class="btn btn-info" th:href="@{/displayPersonAllInfo}">See Resume for this person</a>
+                            <!--Update for using Principal p-->
+                            <!--<a class="btn btn-info" th:href="@{/displayPersonAllInfo/{id}(id=${personObject.id})}">See Resume for this person</a>-->
+                        </div>
+
+                        <div style="padding-top: 10%"> Logged user: <span sec:authentication="name">The user is not logged in yet</span></div>
+                        <div><a href="/logout">Logout</a></div>
+
+                        <!--<div class="col-sm-4">-->
+                            <!--<a class="btn btn-primary" href="/allPersons" type = "submit" style="width:300px">Go to the List of All Users</a>-->
+                        <!--</div>-->
+                        <div class="col-sm-4">
+                            <a class="btn btn-success" href="/welcome" type = "submit" style="width:300px">Job Seeker Home Page</a>
+                        </div>
+                    </div>
+                </div>
+        <!-- /.Links to other Pages -->
+
+    </div>
+    <!-- /.container -->
+
+
+
+
+
+    <!-- Footer -->
+    <div th:replace="base :: footer"></div>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/popper/popper.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/js/clean-blog.min.js"></script>
+
+
+</body>
+
+</html>

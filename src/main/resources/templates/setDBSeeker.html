@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/clean-blog.min.css" rel="stylesheet">
+
+
+
+    <title>Welcome Page</title>
+
+    <title>Welcome to Job/Employee Finder</title>
+</head>
+
+<body>
+<!--&lt;!&ndash; Navigation &ndash;&gt;-->
+<!--<nav th:replace="base :: navbar"></nav>-->
+<!--&lt;!&ndash; /.Navigation &ndash;&gt;-->
+
+<!-- Page Header -->
+<header th:fragment="header" class="masthead" style="background-image: url('/img/banner-finger-keyboard.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <!--<h1>Robo Resume</h1>-->
+                    <!--<div sec:authorize="hasAuthority('RECRUITER')">-->
+                    <!--<h1>Employee Finder</h1>-->
+                    <!--</div>-->
+                    <!--<div sec:authorize="hasAuthority('RECRUITER')">-->
+                    <!--<h1>Job Finder</h1>-->
+                    <!--</div>-->
+                    <h1>Job / Employee Finder</h1>
+                    <h3>
+                        <span class="subheading" style="font-weight: 600">Welcome to My Job Finder Application<br>Create your professional resume in 15 minutes!
+                            <br>Find a Job that Matches Your Skills</span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- /.Page Header -->
+
+
+
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-11 col-md-10 mx-auto">
+
+
+
+            <!--================ Job Seeker Content ONLY===============-->
+            <!--<div sec:authorize="hasAuthority('SEEKER')">-->
+                <!--&lt;!&ndash;&lt;!&ndash;Hi, Job Seeker!&ndash;&gt;&ndash;&gt;-->
+                <!--&lt;!&ndash;<h3 th:text="'Hello Job Seeker, '+${currentPerson.firstName} + ' ' + ${currentPerson.lastName} + '!'"></h3>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                <!--&lt;!&ndash;Logged user: <span sec:authentication="name">The job seeker is not logged in yet</span>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+                <!--&lt;!&ndash;<br>&ndash;&gt;-->
+
+
+
+                <h2>Remember, You need to complete your resume, before you will reseive notifications about matching jobs</h2>
+            <h2>Remember, YUO NEED TO ADD ONE SKILL, before that do not go to HOME PAGE (/welcome)</h2>
+
+
+                <div><a class="btn btn-info" href="/displayPersonAllInfo" type="submit">See Your Resume</a></div><br>
+                <div><a class="btn btn-secondary"  th:href="@{/enterEducation/{id}(id=${currentPerson.id})}" type="submit">Add Education</a></div><br>
+                <div><a class="btn btn-secondary" th:href="@{/enterEmployment/{id}(id=${currentPerson.id})}" type="submit">Add Work</a></div><br>
+
+                <div><a class="btn btn-primary" th:href="@{/addskillstoperson}" type="submit">Add Skill from the List to Person</a></div>
+                <br>
+                <!--<div><a class="btn btn-secondary" th:href="@{/jobsearch}" type="submit">Search Jobs</a></div>-->
+
+                <br>
+
+                <!--<br>-->
+                <!--<div><a th:href="@{/jobsearch}" type="submit">Search Jobs By Skill</a></div>-->
+                <!--<br>-->
+
+                <!--<br>-->
+                <!--<div><a th:href="@{/jobsearch}" type="submit">Search Jobs By Title</a></div>-->
+                <!--<br>-->
+
+                <div><a class="btn btn-secondary" th:href="@{/addskill}" type="submit">Create a New Skill</a></div><br>
+                <!--<div><a th:href="@{/searchjobs}" type="submit">Search a Job</a></div><br>-->
+
+                This content iis only shown to job seeker.
+            <!--</div>-->
+            <!--================ /.Job Seeker ===============-->
+        </div>
+
+
+
+
+
+    </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div th:replace="base :: footer"></div>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/popper/popper.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/clean-blog.min.js"></script>
+
+</body>
+</html>
