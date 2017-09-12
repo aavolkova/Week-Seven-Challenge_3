@@ -1023,25 +1023,25 @@ public class PersonController {
         return "peoplesearchresult";
     }
 
-//Just commented Monday evening:
-//    @GetMapping("/displayPersonInfo/{id}")
-//    public String showAllPersonsInfo(@PathVariable("id") long id, Model model)
-//    {
-//        Person myPerson = personRepository.findOne(id);
-//        model.addAttribute("person", myPerson );
-//        return "displayPerson";
-//    }
-//    /////////////////////////////////////////////////////////////////////
-//
-//    @PostMapping("/displayPersonInfo")
-//    public String showAllPersonsInfo(@RequestParam() String positiontitle,Person person, Model model, Principal principal)
-//    {
-//        System.out.println("displayPersonAllInfo page: p.getname:"+ principal.getName());
-//        Person myPerson = personRepository.findByUsername(principal.getName());
-//        model.addAttribute("person", myPerson );
-//
-//        return "displayPerson";
-//    }
+// Need it to display this info as details about the find person. Display for Recruiter!
+    @GetMapping("/displayPersonInfo/{id}")
+    public String showAllPersonsInfo(@PathVariable("id") long id, Model model)
+    {
+        Person myPerson = personRepository.findOne(id);
+        model.addAttribute("person", myPerson );
+        return "displayPerson";
+    }
+    /////////////////////////////////////////////////////////////////////
+
+    @PostMapping("/displayPersonInfo")
+    public String showAllPersonsInfo(@RequestParam() String positiontitle,Person person, Model model, Principal principal)
+    {
+        System.out.println("displayPersonAllInfo page: p.getname:"+ principal.getName());
+        Person myPerson = personRepository.findByUsername(principal.getName());
+        model.addAttribute("person", myPerson );
+
+        return "displayPerson";
+    }
 
 
 }
